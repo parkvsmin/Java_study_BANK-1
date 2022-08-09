@@ -17,8 +17,23 @@ public class BankBookDAO implements BookDAO {
 
 	@Override
 	public ArrayList<BankBookDTO> getList() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
+
+		Connection con = DBConnector.getConnection();
+		String sql = "SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		
+		while(rs.next()) {
+			BankBookDTO dto = new BankBookDTO();
+			dto.setBookNum(rs.getLong(1));
+			dto.setBookName(rs.getString(2)); 
+			dto.setBookRate(rs.getDouble(3)); 
+			dto.setBookSale(rs.getInt(4)); 
+			ar.add(dto);
+		}
+		DBConnector.disConnect(rs, st, con);
+		return ar;
 	}
 
 	@Override
