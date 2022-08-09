@@ -11,6 +11,8 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
-<a href="">Login</a>
+<a href="./member/login">Login</a>
+<a href="./member/join">Login</a>
+<a href="./bankbook/detail?booknum=1">Detail</a>
 </body>
 </html>
