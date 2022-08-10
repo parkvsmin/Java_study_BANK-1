@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    ArrayList<BankMembersDTO> ar = (ArrayList<BankMembersDTO>)request.getAttribute("list");
+    ArrayList<BankMembersDTO> ar = (ArrayList<BankMembersDTO>)request.getAttribute("search");
     %>
 <!DOCTYPE html>
 <html>

@@ -30,7 +30,7 @@ public class BankBookDAO implements BookDAO {
 	public ArrayList<BankBookDTO> getList() throws Exception {
 		// TODO Auto-generated method stub
 		Connection con = DBConnector.getConnection();
-		ArrayList<BankBookDTO> arr = new ArrayList<BankBookDTO>();
+		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
 		String sql = "SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
@@ -41,11 +41,11 @@ public class BankBookDAO implements BookDAO {
 			bankBookDTO.setBookRate(rs.getDouble("BOOKRATE"));
 			bankBookDTO.setBookSale(rs.getInt("BOOKSALE"));
 			
-			arr.add(bankBookDTO);
+			ar.add(bankBookDTO);
 		}
 		DBConnector.disConnection(rs, st, con);
 		
-		return arr;
+		return ar;
 	}
 
 	@Override
@@ -88,14 +88,14 @@ public class BankBookDAO implements BookDAO {
 		st.setLong(1, bankBookDTO.getBookNum());
 		ResultSet rs = st.executeQuery();
 		
-		BankBookDTO dto = new BankBookDTO();
+		//BankBookDTO bankBookDTO = new BankBookDTO();
 		if(rs.next()) {
-			dto.setBookNum(rs.getLong("BOOKNUM"));
-			dto.setBookName(rs.getString("BOOKNAME"));
-			dto.setBookRate(rs.getDouble("BOOKRATE"));
-			dto.setBookSale(rs.getInt("BOOKSALE"));
+			bankBookDTO.setBookNum(rs.getLong("BOOKNUM"));
+			bankBookDTO.setBookName(rs.getString("BOOKNAME"));
+			bankBookDTO.setBookRate(rs.getDouble("BOOKRATE"));
+			bankBookDTO.setBookSale(rs.getInt("BOOKSALE"));
 		}
-		return dto;
+		return bankBookDTO;
 	}
 
 }
