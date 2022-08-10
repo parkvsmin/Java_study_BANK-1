@@ -23,7 +23,8 @@
 	<table border="1">
 		<thead>
 			<tr>
-				<th>Name</th><th>Rate</th>
+				<th>Name</th>
+				<th>Rate</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -34,12 +35,9 @@
 				</tr>
 			<%} %>
 		</tbody>
-	
 	</table>
 	
-	
-	
-	<a href="detail">Detail</a>
+	<a href="./add">상품등록</a>
 
 </body>
 </html>

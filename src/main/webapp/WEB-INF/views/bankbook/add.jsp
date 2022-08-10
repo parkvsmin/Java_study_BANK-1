@@ -9,7 +9,22 @@
 <body>
 	<h1>Add Page</h1>
 	
-	<form action="add" method="post">
+	<form action="./add" method="post">
+	<div>
+		Name : <input type="text" name="bookName">
+	</div>
+	<div>
+		Rate : <input type="text" name="bookRate">
+	</div>
+	
+	<div>
+		<input type="submit" value="Create">
+		<button type="submit">Add</button>
+	</div>
+	
+	</form>
+	
+<!--  	<form action="add" method="post">
 		<p>BookNum</p>
 		<input type="text" name="bookName">
 		<p>BookRate</p>
@@ -17,5 +32,6 @@
 		<br><br>
 		<input type="submit">
 	</form>
+	-->
 </body>
 </html>
