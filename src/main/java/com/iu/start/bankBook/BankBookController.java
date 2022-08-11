@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/bankbook/*")
 public class BankBookController {
-	
+
 	// /bankbook/add POST / WEB-INF/views/bankbook/add.jsp
 	// name, rate
 	@RequestMapping(value="add",method=RequestMethod.POST)
@@ -27,14 +27,14 @@ public class BankBookController {
 		mv.setViewName("redirect:./list");
 		return mv;
 	}
-	
+
 	// /bankbook/add GET / WEB-INF/views/bankbook/add.jsp
 	@RequestMapping(value="add",method=RequestMethod.GET)
 	public void add()throws Exception {
 		System.out.println("add 실행");
 		//return "bankbook/add";
 	}
-	
+
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list(Model model) throws Exception {
 		//ModelAndView mv = new ModelAndView();
@@ -44,37 +44,81 @@ public class BankBookController {
 		model.addAttribute("list",ar);
 		return "bankbook/list";
 	}
-	
+
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public ModelAndView detail(BankBookDTO bankBookDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("detail 실행");
 		BankBookDAO bankBookDAO = new BankBookDAO();
-		//bankBookDTO =bankBookDAO.getDetail(bankBookDTO);
+		bankBookDTO =bankBookDAO.getDetail(bankBookDTO);
 		//return "bankbook/detail";
 		//DB가 없으신 분들
-		bankBookDTO.setBookName("name");
-		bankBookDTO.setBookRate(3.12);
-		bankBookDTO.setBookSale(1);
 		mv.setViewName("bankbook/detail");
 		mv.addObject("dto", bankBookDTO);
-		
+
 		return mv;
 	}
 	
-//	@RequestMapping(value = "add", method = RequestMethod.GET)
-//	public String add() {
-//		
-//		System.out.println("add GET 실행");
-//		
-//		return "bankbook/add";
-//	}
-//	
-//	@RequestMapping(value = "add", method = RequestMethod.POST)
-//	public void add(BankBookDTO bankBookDTO) throws Exception {
-//		
-//		System.out.println("add Post 실행");
-//		int result = bankBookDAO.setBankBook(bankBookDTO);
-//		System.out.println(result == 1);
-//	}
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public void update(BankBookDTO bankBookDTO,Model model) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		System.out.println(bankBookDTO.getBookNum());
+		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
+		model.addAttribute("dto",bankBookDTO);
+		
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public ModelAndView update(BankBookDTO bankBookDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		System.out.println(bankBookDTO.getBookNum());
+		System.out.println(bankBookDTO.getBookName());
+		System.out.println(bankBookDTO.getBookRate());
+		int result = bankBookDAO.setBankBook(bankBookDTO);
+		//업데이트 후 list로 이동
+		mv.setViewName("redirect:./detail?bookNum="+bankBookDTO.getBookNum());
+		return mv;
+		
+	}
+	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public ModelAndView delete(BankBookDTO bankBookDTO,Model model) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		int result = bankBookDAO.setDelete(bankBookDTO);
+		mv.setViewName("redirect:./list");
+		return mv;
+	}
+	
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public ModelAndView delete(BankBookDTO bankBookDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		System.out.println(bankBookDTO.getBookNum());
+		System.out.println(bankBookDTO.getBookName());
+		System.out.println(bankBookDTO.getBookRate());
+		int result = bankBookDAO.setDelete(bankBookDTO);
+		//업데이트 후 list로 이동
+		//mv.setViewName("redirect:./detail?bookNum="+bankBookDTO.getBookNum());
+		return mv;
+		
+	}
+
+	//	@RequestMapping(value = "add", method = RequestMethod.GET)
+	//	public String add() {
+	//		
+	//		System.out.println("add GET 실행");
+	//		
+	//		return "bankbook/add";
+	//	}
+	//	
+	//	@RequestMapping(value = "add", method = RequestMethod.POST)
+	//	public void add(BankBookDTO bankBookDTO) throws Exception {
+	//		
+	//		System.out.println("add Post 실행");
+	//		int result = bankBookDAO.setBankBook(bankBookDTO);
+	//		System.out.println(result == 1);
+	//	}
 }

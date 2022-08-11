@@ -20,6 +20,7 @@
 	<div>
 		<input type="submit" value="Create">
 		<button type="submit">Add</button>
+		<button type="submit">Delete</button>
 	</div>
 	
 	</form>

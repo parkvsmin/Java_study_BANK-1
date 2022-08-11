@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	//스크립틀릿 <% java code작성 % >
 	//표현식     <%= 자바변수 또는 값 % >
@@ -28,12 +29,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% for(BankBookDTO bankBookDTO:ar){ %>
+			<c:forEach items="${list}" var="dto">
 				<tr>
-					<td><a href="./detail?bookNum=<%= bankBookDTO.getBookNum()%>"><%= bankBookDTO.getBookName() %></a></td>
-					<td><%= bankBookDTO.getBookRate() %> </td>
+					<td><a href="./detail?bookNum=${dto.bookNum}">${dto.bookName}</a></td>
+					<td>${dto.bookRate}</td>
 				</tr>
-			<%} %>
+			</c:forEach>
 		</tbody>
 	</table>
 	

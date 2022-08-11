@@ -14,10 +14,10 @@
             <div class="container">
                 <h2>ID 로그인</h2>
                 <div>
-                    <input type="text" name="id" placeholder="아이디">
+                    <input type="text" name="username" placeholder="아이디">
                 </div>
                 <div>
-                    <input type="password" name="pw" placeholder="비밀번호">
+                    <input type="password" name="password" placeholder="비밀번호">
                 </div>
                
                    <div class="login">
