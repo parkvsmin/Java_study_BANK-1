@@ -9,6 +9,36 @@ import java.util.Calendar;
 import com.iu.start.util.DBConnector;
 
 public class BankBookDAO implements BookDAO {
+	
+	public int setDelete(BankBookDTO bankBookDTO) throws Exception {	
+		Connection con = DBConnector.getConnection();
+		String sql ="DELETE BANKBOOK WHERE BOOKNUM=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setLong(1, bankBookDTO.getBookNum());
+		int result = st.executeUpdate();
+		DBConnector.disConnection(st, con);
+		
+		return result;
+		
+	}
+	
+	
+	@Override
+	public int setUpdate(BankBookDTO bankBookDTO) throws Exception {
+		// TODO Auto-generated method stub
+		Connection con = DBConnector.getConnection();
+		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
+		String sql = "UPDATE BANKBOOK SET BOOKNAME=?, BOOKRATE=? WHERE BOOKNUM=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, bankBookDTO.getBookName());
+		st.setDouble(2, bankBookDTO.getBookRate());
+		st.setLong(3, bankBookDTO.getBookNum());
+		int result = st.executeUpdate();
+		DBConnector.disConnection(st, con);
+		
+		return result;
+	}
+	
 
 	@Override
 	public int setBankBook(BankBookDTO bankBookDTO) throws Exception {

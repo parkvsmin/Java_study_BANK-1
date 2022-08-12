@@ -9,7 +9,7 @@
 <body>
 	<h1>Add Page</h1>
 	
-	<form action="./add" method="post">
+	<form action="./add.iu" method="post">
 	<div>
 		Name : <input type="text" name="bookName">
 	</div>
@@ -20,6 +20,7 @@
 	<div>
 		<input type="submit" value="Create">
 		<button type="submit">Add</button>
+		<button type="submit">Delete</button>
 	</div>
 	
 	</form>
