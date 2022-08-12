@@ -11,7 +11,7 @@ public class BankMembersDAO implements MembersDAO {
 	
 	public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO)throws Exception {
 		Connection con = DBConnector.getConnection();
-		String sql="SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME=? AND PASSWORD";
+		String sql="SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME=? AND PASSWORD=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, bankMembersDTO.getUsername());
 		st.setString(2, bankMembersDTO.getPassword());

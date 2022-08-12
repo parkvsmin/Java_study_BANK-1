@@ -13,19 +13,20 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
-<c:if test="${empty member}">
-<a href="./member/login">Login</a>
-<a href="./member/join">Join</a>
+<c:if test="${empty sessionScope.member}">
+<a href="./member/login.iu">Login</a>
+<a href="./member/join.iu">Join</a>
 </c:if>
-<c:if test="${not empty member}">
-<a href="#">Logout</a>
+<c:if test="${not empty sessionScope.member}">
+<h3>${sessionScope.member.name} 님 환영합니다</h3>
+<a href="./member/logout.iu">Logout</a>
 <a href="#">My Page</a>
 </c:if>
 
-<a href="./bankbook/list">상품리스트</a>
+<a href="./bankbook/list.iu">상품리스트</a>
 <!-- <a href="./bankbook/detail">Detail</a> -->
-<a href="./bankbook/add">Add</a>
-<a href="./member/search">Search</a>
+<a href="./bankbook/add.iu">Add</a>
+<a href="./member/search.iu">Search</a>
 <!-- <a href="./bankbook/update">Update</a> -->
 
 </body>

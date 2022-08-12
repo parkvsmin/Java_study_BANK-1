@@ -9,7 +9,7 @@
 <body>
 	<h1>Delete Page</h1>
 	
-		<form action="./delete" method="post">
+		<form action="./delete.iu" method="post">
 	
 	<div>
 			Num : <input type="hidden" name="bookNum" readonly="readonly" value="${dto.bookNum}">
