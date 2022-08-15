@@ -28,6 +28,7 @@
 <a href="./bankbook/add.iu">Add</a>
 <a href="./member/search.iu">Search</a>
 <!-- <a href="./bankbook/update">Update</a> -->
+<a href="./board/list">Board</a>
 
 </body>
 </html>
